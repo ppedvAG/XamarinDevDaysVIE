@@ -14,7 +14,8 @@ namespace WosIsDes
         {
             InitializeComponent();
 
-            MainPage = new WosIsDes.Views.MainPage(new MainPageViewModel(new PageService()));
+            //MainPage = new WosIsDes.Views.MainPage(new MainPageViewModel(new PageService()));
+            MainPage = new DevDaysDemoMain(new MainPageViewModel(new PageService()));
         }
 
         protected override void OnStart()
