@@ -17,6 +17,7 @@ namespace WosIsDes.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
+        private const string api_key = "fd473b1ef4f745c4af1abc941cf19b83";
         private readonly IPageService pageService;
         private ImageSource thumbnail;
         public ImageSource Thumbnail
@@ -105,7 +106,7 @@ namespace WosIsDes.ViewModels
                     ComputingImage = true;
                     var client = new HttpClient();
                     // Request headers - replace this example key with your valid subscription key.
-                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "fd473b1ef4f745c4af1abc941cf19b83");
+                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", api_key);
 
                     // Request parameters. A third optional parameter is "details".
                     string requestParameters = "visualFeatures=Description,Tags,Categories,Adult&language=en";
@@ -123,6 +124,11 @@ namespace WosIsDes.ViewModels
                         content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                         response = await client.PostAsync(uri, content);
                         responseContent = response.Content.ReadAsStringAsync().Result;
+                    }
+                    if(responseContent.Contains("\"statusCode\": 401"))
+                    {
+                        await pageService.DisplayAlert("Fehler", $"Der API-Key, der im MainPageViewModel verwendet wird, ist ungültig.{Environment.NewLine}Bitte ersetzen Sie den API-Key in der Datei: MainPageViewModel.cs", "OK");
+                        return;
                     }
                     AnalyzedImage ai = JsonConvert.DeserializeObject<AnalyzedImage>(responseContent);
                     ComputingImage = false;
