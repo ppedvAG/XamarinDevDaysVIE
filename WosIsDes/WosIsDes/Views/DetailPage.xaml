@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WosIsDes.Views.DetailPage">
+    <ScrollView>
+        <RelativeLayout>
+            <Image x:Name="ImageThumb" Source="{Binding Thumbnail}"
+			RelativeLayout.XConstraint ="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=0.1}"
+			RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent,
+				Property=Height,
+				Factor=0.05}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression 
+				Type=RelativeToParent,Property=Width,Factor=0.8}"
+			RelativeLayout.HeightConstraint="{ConstraintExpression
+				Type=RelativeToParent, Property=Height,Factor=0.5}"/>
+
+            <ActivityIndicator IsRunning="{Binding Source={x:Reference ImageThumb}, Path=IsLoading}"
+			RelativeLayout.XConstraint ="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=0.1}"
+			RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent,
+				Property=Height,
+				Factor=0.05}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression 
+				Type=RelativeToParent,Property=Width,Factor=0.8}"
+			RelativeLayout.HeightConstraint="{ConstraintExpression
+				Type=RelativeToParent, Property=Height,Factor=0.5}">
+                <ActivityIndicator.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean">
+                        <OnPlatform.iOS>true</OnPlatform.iOS>
+                        <OnPlatform.Android>true</OnPlatform.Android>
+                        <OnPlatform.WinPhone>false</OnPlatform.WinPhone>
+                    </OnPlatform>
+                </ActivityIndicator.IsVisible>
+            </ActivityIndicator>
+
+            <Grid
+			RelativeLayout.XConstraint ="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=0.1}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToView, ElementName=ImageThumb,
+				Property=Width}"
+			RelativeLayout.YConstraint="{ConstraintExpression
+				Type=RelativeToView, ElementName=ImageThumb,
+				Property=Height,
+				Constant=40}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <Label Grid.Column="0" Grid.Row="0" Text="Adult:"/>
+                <StackLayout Grid.Column="1" Grid.Row="0">
+                    <Label  Text="{Binding Adult}"/>
+                </StackLayout>
+
+                <Label Grid.Column="0" Grid.Row="1" Text="Categories:"/>
+                <StackLayout Grid.Column="1" Grid.Row="1">
+                    <Label  Text="{Binding Categories}"/>
+                </StackLayout>
+
+                <Label Grid.Column="0" Grid.Row="2" Text="Description:"/>
+                <StackLayout Grid.Column="1" Grid.Row="2">
+                    <Label  Text="{Binding Description}"/>
+                </StackLayout>
+
+                <Label Grid.Column="0" Grid.Row="3" Text="Tags:"/>
+                <StackLayout Grid.Column="1" Grid.Row="3">
+                    <Label  Text="{Binding Tags}"/>
+                </StackLayout>
+
+
+
+            </Grid>
+        </RelativeLayout>
+    </ScrollView>
+</ContentPage>

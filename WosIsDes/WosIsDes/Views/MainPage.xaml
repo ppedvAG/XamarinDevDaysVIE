@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:WosIsDes"
+			 x:Class="WosIsDes.Views.MainPage">
+    <RelativeLayout>
+        <Image x:Name="ImageThumb" Source="{Binding Thumbnail}"
+			RelativeLayout.XConstraint ="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=0.1}"
+			RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent,
+				Property=Height,
+				Factor=0.05}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression 
+				Type=RelativeToParent,Property=Width,Factor=0.8}"
+			RelativeLayout.HeightConstraint="{ConstraintExpression
+				Type=RelativeToParent, Property=Height,Factor=0.5}"/>
+
+        <ActivityIndicator IsRunning="{Binding Source={x:Reference ImageThumb}, Path=IsLoading}"
+			RelativeLayout.XConstraint ="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=0.1}"
+			RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent,
+				Property=Height,
+				Factor=0.05}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression 
+				Type=RelativeToParent,Property=Width,Factor=0.8}"
+			RelativeLayout.HeightConstraint="{ConstraintExpression
+				Type=RelativeToParent, Property=Height,Factor=0.5}">
+            <ActivityIndicator.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <OnPlatform.iOS>true</OnPlatform.iOS>
+                    <OnPlatform.Android>true</OnPlatform.Android>
+                    <OnPlatform.WinPhone>false</OnPlatform.WinPhone>
+                </OnPlatform>
+            </ActivityIndicator.IsVisible>
+        </ActivityIndicator>
+
+        <Button x:Name="buttonTakeImage" Text="Take Image" Command="{Binding ButtonTakeImageClickedCommand}"
+			RelativeLayout.XConstraint ="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=0.1}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToView, ElementName=ImageThumb,
+				Property=Width}"
+			RelativeLayout.YConstraint="{ConstraintExpression
+				Type=RelativeToView, ElementName=ImageThumb,
+				Property=Height,
+				Constant=40}"/>
+
+        <Button x:Name="buttonImageFromGallery" Text="Image from Gallery" Command="{Binding ButtonImageFromGalleryClickedCommand}"
+			RelativeLayout.XConstraint ="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=0.1}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToView, ElementName=ImageThumb,
+				Property=Width}"
+			RelativeLayout.YConstraint="{ConstraintExpression
+				Type=RelativeToView, ElementName=buttonTakeImage,
+				Property=Y,
+				Constant=50}"/>
+
+        <Button x:Name="buttonScan" Text="Scan !" Command="{Binding ButtonScanClickedCommand}"
+			RelativeLayout.XConstraint ="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=0.1}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToView, ElementName=ImageThumb,
+				Property=Width}"
+			RelativeLayout.YConstraint="{ConstraintExpression
+				Type=RelativeToView, ElementName=buttonImageFromGallery,
+				Property=Y,
+				Constant=70}"/>
+
+        <ActivityIndicator IsRunning="{Binding ComputingImage}" IsVisible="{Binding ComputingImage}"
+            RelativeLayout.XConstraint ="{ConstraintExpression 
+                Type=RelativeToParent,
+                Property=Width,
+                Factor=0.1}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression
+                Type=RelativeToView, ElementName=ImageThumb,
+                Property=Width}"
+            RelativeLayout.YConstraint="{ConstraintExpression
+                Type=RelativeToView, ElementName=buttonScan,
+                Property=Y,
+                Constant=70}"/>
+    </RelativeLayout>
+
+</ContentPage>
