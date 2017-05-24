@@ -53,6 +53,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
 
@@ -65,26 +66,19 @@
 
 
                 <Label Grid.Column="0" Grid.Row="0" Text="Adult:"/>
-                <StackLayout Grid.Column="1" Grid.Row="0">
-                    <Label  Text="{Binding Adult}"/>
-                </StackLayout>
-
+                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Adult}" LineBreakMode="WordWrap"/>
+                <Label Grid.Column="2" Grid.Row="0" Text="{Binding AdultScore}" LineBreakMode="WordWrap"/>
+           
                 <Label Grid.Column="0" Grid.Row="1" Text="Categories:"/>
-                <StackLayout Grid.Column="1" Grid.Row="1">
-                    <Label  Text="{Binding Categories}"/>
-                </StackLayout>
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Categories}" LineBreakMode="WordWrap"/>
+                <Label Grid.Column="2" Grid.Row="1" Text="{Binding CategoriesScore}" LineBreakMode="WordWrap"/>
 
                 <Label Grid.Column="0" Grid.Row="2" Text="Description:"/>
-                <StackLayout Grid.Column="1" Grid.Row="2">
-                    <Label  Text="{Binding Description}"/>
-                </StackLayout>
+                <Label Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Description}" LineBreakMode="WordWrap"/>
 
                 <Label Grid.Column="0" Grid.Row="3" Text="Tags:"/>
-                <StackLayout Grid.Column="1" Grid.Row="3">
-                    <Label  Text="{Binding Tags}"/>
-                </StackLayout>
-
-
+                <Label Grid.Column="1" Grid.Row="3" Text="{Binding Tags}" LineBreakMode="WordWrap"/>
+                <Label Grid.Column="2" Grid.Row="3" Text="{Binding TagsScore}" LineBreakMode="WordWrap"/>
 
             </Grid>
         </RelativeLayout>

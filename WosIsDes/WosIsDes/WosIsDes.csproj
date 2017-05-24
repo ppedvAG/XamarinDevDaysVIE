@@ -38,7 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DevDaysDemoMain.xaml.cs">
+    <Compile Include="Views\DevDaysDemoMain.xaml.cs">
       <DependentUpon>DevDaysDemoMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\IFileHelper.cs" />
@@ -112,7 +112,7 @@
     <Content Include="Images\readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DevDaysDemoMain.xaml">
+    <EmbeddedResource Include="Views\DevDaysDemoMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

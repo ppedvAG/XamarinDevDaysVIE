@@ -24,28 +24,49 @@ namespace WosIsDes.ViewModels
         {
             get
             {
-                return $"{Image.Adult.IsAdultContent} - Probability: {String.Format("{0:P2}",Image.Adult.AdultScore)}";
+                return Image.Adult.IsAdultContent.ToString();
+            }
+        }
+        public string AdultScore
+        {
+            get
+            {
+                return String.Format("{0:P2}", Image.Adult.AdultScore);
             }
         }
         public string Categories
         {
             get
-            {
-                return string.Join(Environment.NewLine, Image.Categories.Select(x => $"{x.Name} - {String.Format("{0:P2}", x.Score)}").ToArray());
+            {    // ListView erstellen und eintragen ?
+                return string.Join(Environment.NewLine, Image.Categories.Select(x => x.Name).ToArray());
+            }
+        }
+        public string CategoriesScore
+        {
+            get
+            {    // ListView erstellen und eintragen ?
+                return string.Join(Environment.NewLine, Image.Categories.Select(x => String.Format("{0:P2}", x.Score)).ToArray());
             }
         }
         public string Description
         {
             get
             {
-                return $"Description: {Image.Description.Captions[0].Text}";
+                return $"{Image.Description.Captions[0].Text}";
             }
         }
         public string Tags
         {
             get
             {
-                return string.Join(Environment.NewLine, Image.Tags.Select(x => $"{x.Name} - {String.Format("{0:P2}", x.Confidence)}").ToArray());
+                return string.Join(Environment.NewLine, Image.Tags.Select(x => x.Name).ToArray());
+            }
+        }
+        public string TagsScore
+        {
+            get
+            {
+                return string.Join(Environment.NewLine, Image.Tags.Select(x => String.Format("{0:P2}", x.Confidence)).ToArray());
             }
         }
 
